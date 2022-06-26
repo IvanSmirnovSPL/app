@@ -26,9 +26,9 @@ class Window(QMainWindow):
         self.slider.setTickPosition(QtWidgets.QSlider.TicksBothSides)
         self.slider.setSingleStep(1)
 
-        vbox = QtWidgets.QVBoxLayout()
-        vbox.addWidget(self)
-        vbox.addWidget(self.slider)
+        self.vbox = QtWidgets.QVBoxLayout()
+        self.vbox.addWidget(self)
+        self.vbox.addWidget(self.slider)
         #self.setLayout(vbox)
 
         self.slider.valueChanged.connect(QtWidgets.QLCDNumber(self).display)
@@ -43,6 +43,8 @@ class Window(QMainWindow):
         self.btn.setText("Push")
         self.btn.adjustSize()
         self.btn.clicked.connect(self.add_label)
+
+        self.sd = QtWidgets.Ui_
 
     def add_label(self):
         self.new_text.setText("New Text")
