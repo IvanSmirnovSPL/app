@@ -4,6 +4,8 @@ from PyQt5.QtCore import Qt
 
 import sys
 
+from my_slider import MySlider, Point
+
 
 class Window(QMainWindow):
     def __init__(self):
@@ -15,7 +17,24 @@ class Window(QMainWindow):
 
         self.new_text = QtWidgets.QLabel(self)
 
-        self.slider = QtWidgets.QSlider(Qt.Horizontal, self)
+        self.main_text = QtWidgets.QLabel(self)
+        self.main_text.setText("Hello")
+        self.main_text.move(100, 100)
+        self.main_text.adjustSize()
+
+        self.btn1 = QtWidgets.QPushButton(self)
+        self.btn1.move(10, 160)
+        self.btn1.setText("Edit")
+        self.btn1.adjustSize()
+        self.btn1.clicked.connect(self.add_label)
+
+        self.btn2 = QtWidgets.QPushButton(self)
+        self.btn2.move(120, 160)
+        self.btn2.setText("Apply")
+
+        self.slider = MySlider(self, self.btn2, Point(200, 100), range(0, 5))
+
+        '''self.slider = QtWidgets.QSlider(Qt.Horizontal, self)
         self.slider.move(200, 100)
         self.slider.adjustSize()
         self.slider.setTickInterval(5)
@@ -23,7 +42,7 @@ class Window(QMainWindow):
         self.slider.setValue(10)
         self.slider.setRange(10, 40)
         self.slider.setFocusPolicy(Qt.StrongFocus)
-        self.slider.setTickPosition(QtWidgets.QSlider.TicksBothSides)
+5        self.slider.setTickPosition(QtWidgets.QSlider.TicksBothSides)
         self.slider.setSingleStep(1)
 
         self.vbox = QtWidgets.QVBoxLayout()
@@ -31,26 +50,16 @@ class Window(QMainWindow):
         self.vbox.addWidget(self.slider)
         #self.setLayout(vbox)
 
-        self.slider.valueChanged.connect(QtWidgets.QLCDNumber(self).display)
+        self.slider.valueChanged.connect(QtWidgets.QLCDNumber(self).display)'''
 
-        self.main_text = QtWidgets.QLabel(self)
-        self.main_text.setText("Hello")
-        self.main_text.move(100, 100)
-        self.main_text.adjustSize()
 
-        self.btn = QtWidgets.QPushButton(self)
-        self.btn.move(70, 150)
-        self.btn.setText("Push")
-        self.btn.adjustSize()
-        self.btn.clicked.connect(self.add_label)
 
-        self.sd = QtWidgets.Ui_
 
     def add_label(self):
         self.new_text.setText("New Text")
         self.new_text.move(100, 50)
         self.new_text.adjustSize()
-        print(self.slider.value())
+        #print(self.slider.value())
 
 
 
